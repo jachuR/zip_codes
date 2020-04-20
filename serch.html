@@ -42,9 +42,9 @@
 
 			 map.on('click', 'kody', function(e) { //kody -nazwa warstwy
 							new mapboxgl.Popup()
-											.setLngLat(e.lngLat)
-											.setHTML('tel. ' + e.features[0].properties.Kontakt)
-											.addTo(map);
+									.setLngLat(e.lngLat)
+									.setHTML('tel. ' + e.features[0].properties.Kontakt)
+									.addTo(map);
 					});
 
 					// Change the cursor to a pointer when the mouse is over the states layer.
