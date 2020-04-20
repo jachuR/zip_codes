@@ -24,14 +24,17 @@
 		<div id="map"></div>
  
 		<script>
-			mapboxgl.accessToken = 'pk.eyJ1IjoiamFucml0dGVyIiwiYSI6ImNrOGo3MXdoZDA4b3UzbnA5eXoxam04b2IifQ.N4OA_X_66i5EJKl3ox62jw';
+			// personal token from mapbox account 
+			mapboxgl.accessToken = 'pk.ey[...]'; // replace this with your access token
 			var map = new mapboxgl.Map({
 				container: 'map',
+				// style created in mapbox studio
 				style: 'mapbox://styles/janritter/ck8k01m8528rf1imheckmmj5f',
+				// default centre and zoom
 				center: [21.017532, 52.2370498],
 				zoom: 6
 				});
- 
+ 			// add searcher with geocoding
 				map.addControl(
 				new MapboxGeocoder({
 				accessToken: mapboxgl.accessToken,
@@ -39,16 +42,16 @@
 				})
 				);
 
-
-			 map.on('click', 'kody', function(e) { //kody -nazwa warstwy
+			// add popups with phone numbers
+			 map.on('click', 'kody', function(e) { //"kody" -name of layer
 							new mapboxgl.Popup()
 									.setLngLat(e.lngLat)
-									.setHTML('tel. ' + e.features[0].properties.Kontakt)
+									.setHTML('tel. ' + e.features[0].properties.Kontakt) // text to display = "tel." + value from column "Kontakt"
 									.addTo(map);
 					});
 
 					// Change the cursor to a pointer when the mouse is over the states layer.
-					map.on('mouseenter', 'kody', function() { //kody -nazwa warstwy
+					map.on('mouseenter', 'kody', function() { //kody -name of layer
 						map.getCanvas().style.cursor = 'pointer';
 					});
 
